@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "print_args": {
+      "commandName": "Project",
+      "commandLineArgs": "hi world"
+    }
+  }
+}
