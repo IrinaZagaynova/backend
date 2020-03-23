@@ -26,7 +26,7 @@ c) Status Code: 302 Found
 Описывает специальное поведение веб сервера.
 
 d) HTTP ERROR 400
-Cервер обнаружил в запросе клиента синтаксическую ошибку.
+Неудачный запрос от клиента.
 Нужно заменить запрос на:
 http://localhost/lw1/javascript_is_a_client_side_language.php?how_to_work=hard
 
