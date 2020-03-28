@@ -39,10 +39,10 @@ namespace CheckIdentifier_tests
     {
 
         [TestMethod]
-        public void IsCharacterEnglishLetter_Number_Test()
+        public void IsCharacterEnglishLetter_Digit_Test()
         {
-            char number = '1';
-            bool result = CheckIdentifier.Program.IsCharacterEnglishLetter(number);
+            char digit = '1';
+            bool result = CheckIdentifier.Program.IsCharacterEnglishLetter(digit);
             Assert.IsFalse(result);
         }
 
@@ -64,30 +64,30 @@ namespace CheckIdentifier_tests
     }
 
     [TestClass]
-    public class CheckIsStringConsistsOfNumbersOrEnglishLetters_tests
+    public class CheckIsStringConsistsOfDigitsOrEnglishLetters_tests
     {
 
         [TestMethod]
-        public void IsStringConsistsOfNumbersOrEnglishLetters_EmptyString_Test()
+        public void IsStringConsistsOfDigitsOrEnglishLetters_EmptyString_Test()
         {
             string str = "";
-            bool result = CheckIdentifier.Program.IsStringConsistsOfNumbersOrEnglishLetters(str);
+            bool result = CheckIdentifier.Program.IsStringConsistsOfDigitsOrEnglishLetters(str);
             Assert.IsTrue(result);
         }
 
         [TestMethod]
-        public void IsStringConsistsOfNumbersOrEnglishLetters_StringWithSpace_Test()
+        public void IsStringConsistsOfDigitsOrEnglishLetters_StringWithSpace_Test()
         {
             string str = "not identifier";
-            bool result = CheckIdentifier.Program.IsStringConsistsOfNumbersOrEnglishLetters(str);
+            bool result = CheckIdentifier.Program.IsStringConsistsOfDigitsOrEnglishLetters(str);
             Assert.IsFalse(result);
         }
 
         [TestMethod]
-        public void IsStringConsistsOfNumbersOrEnglishLetters_StringWithSpecialCharacter_Test()
+        public void IsStringConsistsOfDigitsOrEnglishLetters_StringWithSpecialCharacter_Test()
         {
             string str = "not*identifier";
-            bool result = CheckIdentifier.Program.IsStringConsistsOfNumbersOrEnglishLetters(str);
+            bool result = CheckIdentifier.Program.IsStringConsistsOfDigitsOrEnglishLetters(str);
             Assert.IsFalse(result);
         }
     }

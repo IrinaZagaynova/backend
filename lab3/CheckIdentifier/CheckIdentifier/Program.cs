@@ -26,7 +26,7 @@ namespace CheckIdentifier
             return false;
         }
 
-        public static bool IsStringConsistsOfNumbersOrEnglishLetters(string inputParameter)
+        public static bool IsStringConsistsOfDigitsOrEnglishLetters(string inputParameter)
         {
             for (int i = 0; i < inputParameter.Length; i++)
             {
@@ -52,10 +52,10 @@ namespace CheckIdentifier
                 System.Console.WriteLine("The identifier must begin with a letter");
                 return false;
             }
-            if (!IsStringConsistsOfNumbersOrEnglishLetters(inputParameter.Substring(1)))
+            if (!IsStringConsistsOfDigitsOrEnglishLetters(inputParameter.Substring(1)))
             {
                 System.Console.WriteLine("no");
-                System.Console.WriteLine("The first character may be followed by letters and/or numbers.");
+                System.Console.WriteLine("The first character may be followed by letters and/or digits.");
                 return false;
             }
             System.Console.WriteLine("yes");
