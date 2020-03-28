@@ -1,21 +1,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CheckIdentifier_tests
+namespace CheckIdentifierTests
 {
     [TestClass]
-    public class CheckParseArgs_tests
+    public class CheckParseArgsTests
     {
-        [TestMethod]
-        public void ParseArgs_NilArgs_Test()
-        {
-            string[] str = { };
-            string inputParameter = "";
-            bool result = CheckIdentifier.Program.ParseArgs(str, ref inputParameter);
-            Assert.IsFalse(result);
-        }
 
         [TestMethod]
-        public void ParseArgs_TwoArgs_Test()
+        public void Invalid_number_of_args()
         {
             string[] str = { "hello", "world" };
             string inputParameter = "";
@@ -24,7 +16,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void ParseArgs_OneArgs_Test()
+        public void Correct_number_of_args()
         {
             string[] str = { "hello" };
             string inputParameter = "";
@@ -35,11 +27,11 @@ namespace CheckIdentifier_tests
     }
 
     [TestClass]
-    public class CheckIsCharacterEnglishLetter_tests
+    public class CheckIsCharacterEnglishLetterTests
     {
 
         [TestMethod]
-        public void IsCharacterEnglishLetter_Digit_Test()
+        public void Digit_not_english_letter()
         {
             char digit = '1';
             bool result = CheckIdentifier.Program.IsCharacterEnglishLetter(digit);
@@ -47,7 +39,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void IsCharacterEnglishLetter_RussianLetter_Test()
+        public void Russian_letter_not_english_letter()
         {
             char letter = 'è';
             bool result = CheckIdentifier.Program.IsCharacterEnglishLetter(letter);
@@ -55,7 +47,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void IsCharacterEnglishLetter_EnglishLetter_Test()
+        public void English_letter()
         {
             char letter = 'a';
             bool result = CheckIdentifier.Program.IsCharacterEnglishLetter(letter);
@@ -64,11 +56,11 @@ namespace CheckIdentifier_tests
     }
 
     [TestClass]
-    public class CheckIsStringConsistsOfDigitsOrEnglishLetters_tests
+    public class CheckIsStringConsistsOfDigitsOrEnglishLettersTests
     {
 
         [TestMethod]
-        public void IsStringConsistsOfDigitsOrEnglishLetters_EmptyString_Test()
+        public void Empty_string_does_not_contain_inappropriate_characters()
         {
             string str = "";
             bool result = CheckIdentifier.Program.IsStringConsistsOfDigitsOrEnglishLetters(str);
@@ -76,7 +68,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void IsStringConsistsOfDigitsOrEnglishLetters_StringWithSpace_Test()
+        public void Space_is_an_inappropriate_symbol()
         {
             string str = "not identifier";
             bool result = CheckIdentifier.Program.IsStringConsistsOfDigitsOrEnglishLetters(str);
@@ -84,7 +76,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void IsStringConsistsOfDigitsOrEnglishLetters_StringWithSpecialCharacter_Test()
+        public void Special_characteris_an_inappropriate_symbol()
         {
             string str = "not*identifier";
             bool result = CheckIdentifier.Program.IsStringConsistsOfDigitsOrEnglishLetters(str);
@@ -93,10 +85,10 @@ namespace CheckIdentifier_tests
     }
 
     [TestClass]
-    public class CheckCheckIdentifier_tests
+    public class CheckCheckIdentifierTests
     {
         [TestMethod]
-        public void CheckIdentifier_EmptyString_Test()
+        public void Empty_string_can_not_be_identifier()
         {
             string str = "";
             bool result = CheckIdentifier.Program.CheckIdentifier(str);
@@ -104,7 +96,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void CheckIdentifier_StringStartingWithDigit_Test()
+        public void String_starting_with_a_digit_can_not_be_identifier()
         {
             string str = "1abc";
             bool result = CheckIdentifier.Program.CheckIdentifier(str);
@@ -112,7 +104,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void CheckIdentifier_StringWithSpecialCharacter_Test()
+        public void String_with_special_character_can_not_be_identifier()
         {
             string str = "ab&c";
             bool result = CheckIdentifier.Program.CheckIdentifier(str);
@@ -120,7 +112,7 @@ namespace CheckIdentifier_tests
         }
 
         [TestMethod]
-        public void CheckIdentifier_CorrectString_Test()
+        public void Ñorrect_string_can_be_an_identifier()
         {
             string str = "abc123";
             bool result = CheckIdentifier.Program.CheckIdentifier(str);
