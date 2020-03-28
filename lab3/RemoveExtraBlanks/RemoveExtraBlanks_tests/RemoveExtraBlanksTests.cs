@@ -25,7 +25,7 @@ namespace RemoveExtraBlanksTests
     }
 
     [TestClass]
-    public class RemoveExtraSpacesTests
+    public class RemoveRepetitiveSpacesTests
     {
         [TestMethod]
         public void Remove_duplicate_spaces_and_tabs()
