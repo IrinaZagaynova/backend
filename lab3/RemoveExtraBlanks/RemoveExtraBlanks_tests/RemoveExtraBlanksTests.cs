@@ -3,9 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RemoveExtraBlanksTests
 {
     [TestClass]
-    public class CheckParseArgsTests
+    public class ParseArgsTests
     {
-
         [TestMethod]
         public void Invalid_number_of_args()
         {
@@ -26,7 +25,7 @@ namespace RemoveExtraBlanksTests
     }
 
     [TestClass]
-    public class CheckRemoveExtraSpacesTests
+    public class RemoveExtraSpacesTests
     {
         [TestMethod]
         public void Remove_duplicate_spaces_and_tabs()
