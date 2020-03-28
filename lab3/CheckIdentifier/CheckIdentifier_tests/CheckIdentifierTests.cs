@@ -3,9 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CheckIdentifierTests
 {
     [TestClass]
-    public class CheckParseArgsTests
+    public class ParseArgsTests
     {
-
         [TestMethod]
         public void Invalid_number_of_args()
         {
@@ -23,13 +22,11 @@ namespace CheckIdentifierTests
             bool result = CheckIdentifier.Program.ParseArgs(str, ref inputParameter);
             Assert.IsTrue(result);
         }
-
     }
 
     [TestClass]
-    public class CheckIsCharacterEnglishLetterTests
+    public class IsCharacterEnglishLetterTests
     {
-
         [TestMethod]
         public void Digit_not_english_letter()
         {
@@ -56,9 +53,8 @@ namespace CheckIdentifierTests
     }
 
     [TestClass]
-    public class CheckIsStringConsistsOfDigitsOrEnglishLettersTests
+    public class IsStringConsistsOfDigitsOrEnglishLettersTests
     {
-
         [TestMethod]
         public void Empty_string_does_not_contain_inappropriate_characters()
         {
@@ -85,7 +81,7 @@ namespace CheckIdentifierTests
     }
 
     [TestClass]
-    public class CheckCheckIdentifierTests
+    public class CheckIdentifierTests
     {
         [TestMethod]
         public void Empty_string_can_not_be_identifier()
