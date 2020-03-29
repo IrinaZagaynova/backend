@@ -6,7 +6,16 @@ namespace CheckIdentifierTests
     public class ParseArgsTests
     {
         [TestMethod]
-        public void Invalid_number_of_args()
+        public void Too_few_args()
+        {
+            string[] str = {};
+            string inputParameter = "";
+            bool result = CheckIdentifier.Program.ParseArgs(str, ref inputParameter);
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Too_many_args()
         {
             string[] str = { "hello", "world" };
             string inputParameter = "";
