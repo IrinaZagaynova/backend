@@ -151,10 +151,10 @@ namespace PasswordStrength
             passwordStrength += ConsideringTheNumberOfLowercaseCharacters(password);
             
             // Если пароль состоит только из букв вычитаем число равное количеству символов
-            passwordStrength -= ConsideringIfThePasswordConsistsOfLettersOnly(password);
+            passwordStrength += ConsideringIfThePasswordConsistsOfLettersOnly(password);
             
             // Если пароль состоит только из цифр вычитаем число равное количеству символов
-            passwordStrength -= ConsideringIfThePasswordConsistsOfDigitsOnly(password);
+            passwordStrength += ConsideringIfThePasswordConsistsOfDigitsOnly(password);
             
             // За каждый повторяющийся символ в пароле вычитается количество повторяющихся символов
             passwordStrength -= ConsideringTheNumberOfRepeatedCharacters(password);
