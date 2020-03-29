@@ -48,20 +48,12 @@ namespace RemoveExtraBlanks
             line = RemoveRepetitiveSpaces(line);
         }
 
-        public static int Main(string[] args)
+        public static bool OpenFilesAndCopyRemovingExtraSpaces(string inputFileName, string outputFileName)
         {
-            string inputFileName = "";
-            string outputFileName = "";
-
-            if (!ParseArgs(args, ref inputFileName, ref outputFileName))
-            {
-                return 1;
-            }
-
             if (!File.Exists(inputFileName))
             {
-                Console.WriteLine("Failed to open " + inputFileName) ;
-                return 1;
+                Console.WriteLine("Doesn't exist " + inputFileName);
+                return false;
             }
 
             StreamReader inputFile = new StreamReader(inputFileName);
@@ -76,6 +68,23 @@ namespace RemoveExtraBlanks
 
             inputFile.Close();
             outputFile.Close();
+            return true;
+        }
+
+        public static int Main(string[] args)
+        {
+            string inputFileName = "";
+            string outputFileName = "";
+
+            if (!ParseArgs(args, ref inputFileName, ref outputFileName))
+            {
+                return 1;
+            }
+
+            if (!OpenFilesAndCopyRemovingExtraSpaces(inputFileName, outputFileName))
+            {
+                return 1;
+            }
 
             return 0;
         }

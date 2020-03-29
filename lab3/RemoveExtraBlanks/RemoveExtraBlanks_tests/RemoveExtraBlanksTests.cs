@@ -6,7 +6,16 @@ namespace RemoveExtraBlanksTests
     public class ParseArgsTests
     {
         [TestMethod]
-        public void Invalid_number_of_args()
+        public void Too_few_args()
+        {
+            string[] str = {}; ;
+            string parameter = "";
+            bool result = RemoveExtraBlanks.Program.ParseArgs(str, ref parameter, ref parameter);
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Too_many_args()
         {
             string[] str = { "input.txt", "output.txt", "smth" }; ;
             string parameter = "";
