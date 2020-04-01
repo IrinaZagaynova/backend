@@ -136,8 +136,9 @@ namespace PasswordStrength
             return passwordStrength;
         }
 
-        public static int GetPasswordStrength(string password, ref int passwordStrength)
+        public static int GetPasswordStrength(string password)
         {
+            int passwordStrength = 0;
             // К надежности пароля прибавляется (4*n), где n - количество всех симоволов пароля
             passwordStrength = 4 * password.Length;
             
@@ -176,8 +177,8 @@ namespace PasswordStrength
                 return 1;
             }
 
-            int passwordStrength = 0;
-            passwordStrength = GetPasswordStrength(password, ref passwordStrength);
+            int passwordStrength;
+            passwordStrength = GetPasswordStrength(password);
             System.Console.WriteLine(passwordStrength);
             return 0;
         }

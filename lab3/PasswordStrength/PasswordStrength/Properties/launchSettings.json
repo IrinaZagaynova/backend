@@ -2,7 +2,7 @@
   "profiles": {
     "PasswordStrength": {
       "commandName": "Project",
-      "commandLineArgs": "passsworda"
+      "commandLineArgs": "paSSword"
     }
   }
 }
