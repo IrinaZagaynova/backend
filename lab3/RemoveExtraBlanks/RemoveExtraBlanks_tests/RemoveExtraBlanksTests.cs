@@ -54,7 +54,7 @@ namespace RemoveExtraBlanksTests
         {
             string str = "   string    with    extra spaces";
             string expectedStr = "string with extra spaces";
-            RemoveExtraBlanks.Program.RemoveExtraBlanksInLine(ref str);
+            str = RemoveExtraBlanks.Program.RemoveExtraBlanksInLine(str);
             Assert.AreEqual(expectedStr, str);
         }
     }

@@ -42,10 +42,12 @@ namespace RemoveExtraBlanks
             return newLine;
         }
 
-        public static void RemoveExtraBlanksInLine(ref string line)
+        public static string RemoveExtraBlanksInLine(string line)
         {
+            string newLine;
             line = line.Trim();
-            line = RemoveRepetitiveSpaces(line);
+            newLine = RemoveRepetitiveSpaces(line);
+            return newLine;
         }
 
         public static bool OpenFilesAndCopyRemovingExtraSpaces(string inputFileName, string outputFileName)
@@ -60,10 +62,11 @@ namespace RemoveExtraBlanks
             StreamWriter outputFile = new StreamWriter(outputFileName);
 
             String line;
+            String newLine;
             while ((line = inputFile.ReadLine()) != null)
             {
-                RemoveExtraBlanksInLine(ref line);
-                outputFile.WriteLine(line);
+                newLine = RemoveExtraBlanksInLine(line);
+                outputFile.WriteLine(newLine);
             }
 
             inputFile.Close();
