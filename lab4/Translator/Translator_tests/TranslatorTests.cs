@@ -40,7 +40,7 @@ namespace TranslatorTests
         [TestMethod]
         public void Not_russian_word_return_false()
         {
-            string str = "abfj";
+            string str = "b";
             bool result = Translator.TranslateData.IsItRussian(str);
             Assert.IsFalse(result);
 
@@ -114,7 +114,7 @@ namespace TranslatorTests
             str = "day";
             expectedStr = "день";
             translatedStr = "";
-            result = Translator.TranslateData.TranslateEnglishToRussian(str, ref translatedStr);
+            result = Translator.TranslateData.TranslateTheWord(str, ref translatedStr);
             Assert.IsTrue(result);
             Assert.AreEqual(expectedStr, translatedStr);
         }
