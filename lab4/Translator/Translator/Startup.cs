@@ -1,51 +1,52 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Translator.Models;
 
 namespace Translator
 {
     public class Startup
     {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+        }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {     
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }           
+        {
+            app.UseDeveloperExceptionPage();
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
+            app.Run(async (context) =>
             {
-                endpoints.MapGet("/", async context =>
+                Dictionary<string, string> dictionary;
+                dictionary = Dictionary.FillInDictionary("dictionary.txt");
+                if (context.Request.Query.ContainsKey("word"))
                 {
-                    if (context.Request.Query.ContainsKey("word"))
+                    string word = context.Request.Query["word"];
+                    string translation = "";
+                    if (Dictionary.TranslateWord(word, ref translation, dictionary))
                     {
-                        string word = context.Request.Query["word"];
-                        string translatedWord = "";
-                        if (TranslateData.TranslateTheWord(word, ref translatedWord))
-                        {
-                            context.Response.ContentType = "text/plain; charset=utf-8";       
-                            await context.Response.WriteAsync(translatedWord);
-                        }
-                        else 
-                        {
-                            context.Response.StatusCode = 404;                                       
-                        }
+                        context.Response.ContentType = "text/plain; charset=utf-8";
+                        await context.Response.WriteAsync(translation);
                     }
                     else
                     {
-                        context.Response.StatusCode = 400;
+                        context.Response.StatusCode = 404;
                     }
-                });
+                }
+                else
+                {
+                    context.Response.StatusCode = 400;
+                }
             });
         }
     }

@@ -1,6 +1,6 @@
-﻿day
+﻿cat
+кот
+day
 день
-morning
-утро
-night
-ночь
+good morning
+доброе утро

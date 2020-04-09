@@ -1,6 +1,0 @@
-﻿day
-день
-morning
-утро
-night
-ночь
