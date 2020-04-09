@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Translator.Models
+namespace Translator
 {
     public class Dictionary
     {
@@ -71,7 +71,7 @@ namespace Translator.Models
                 }
                 return true;
             }
-            else 
+            else
             {
                 translation = TranslateFromRussianToEnglish(word, dictionary);
                 if (translation == null)
