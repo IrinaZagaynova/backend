@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator", "Translator\Translator.csproj", "{49AA6295-822A-4E9F-BDD7-444F8DE39A4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Translator", "Translator\Translator.csproj", "{49AA6295-822A-4E9F-BDD7-444F8DE39A4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator_tests", "TranslatorTests\Translator_tests.csproj", "{1374A98B-1E06-49AF-9AE5-BAE534CD7200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslatorTests", "TranslatorTests\TranslatorTests.csproj", "{1374A98B-1E06-49AF-9AE5-BAE534CD7200}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
