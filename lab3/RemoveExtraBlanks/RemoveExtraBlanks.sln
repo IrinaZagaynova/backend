@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoveExtraBlanks", "RemoveExtraBlanks\RemoveExtraBlanks.csproj", "{9442B0CA-AC91-468E-9134-C30233AAB598}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveExtraBlanks_tests", "RemoveExtraBlanks_tests\RemoveExtraBlanks_tests.csproj", "{81735048-7C53-422B-9BBC-4D53454C8610}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoveExtraBlanksTests", "RemoveExtraBlanks_tests\RemoveExtraBlanksTests.csproj", "{81735048-7C53-422B-9BBC-4D53454C8610}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

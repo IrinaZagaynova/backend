@@ -3,37 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RemoveExtraBlanksTests
 {
     [TestClass]
-    public class ParseArgsTests
-    {
-        [TestMethod]
-        public void Too_few_args()
-        {
-            string[] str = {}; ;
-            string parameter = "";
-            bool result = RemoveExtraBlanks.Program.ParseArgs(str, ref parameter, ref parameter);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void Too_many_args()
-        {
-            string[] str = { "input.txt", "output.txt", "smth" }; ;
-            string parameter = "";
-            bool result = RemoveExtraBlanks.Program.ParseArgs(str, ref parameter, ref parameter);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void Correct_number_of_args()
-        {
-            string[] str = { "input.txt", "output.txt"}; ;
-            string parameter = "";
-            bool result = RemoveExtraBlanks.Program.ParseArgs(str, ref parameter, ref parameter);
-            Assert.IsTrue(result);
-        }
-    }
-
-    [TestClass]
     public class RemoveRepetitiveSpacesTests
     {
         [TestMethod]

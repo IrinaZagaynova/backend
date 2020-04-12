@@ -6,19 +6,6 @@ namespace RemoveExtraBlanks
 {
     public class Program
     {
-        public static bool ParseArgs(string[] args, ref string inputFileName, ref string outputFileName)
-        {
-            if (args.Length != 2)
-            {
-                System.Console.WriteLine("Incorrect number of arguments!");
-                System.Console.WriteLine("Usage RemoveExtraBlanks.exe <input file name> <output file name>");
-                return false;
-            }
-            inputFileName = args[0];
-            outputFileName = args[1];
-            return true;
-        }
-
         public static string RemoveRepetitiveSpaces(string line)
         {
             bool repetitionOfSpaces = false;
@@ -71,6 +58,19 @@ namespace RemoveExtraBlanks
 
             inputFile.Close();
             outputFile.Close();
+            return true;
+        }
+
+        public static bool ParseArgs(string[] args, ref string inputFileName, ref string outputFileName)
+        {
+            if (args.Length != 2)
+            {
+                System.Console.WriteLine("Incorrect number of arguments!");
+                System.Console.WriteLine("Usage RemoveExtraBlanks.exe <input file name> <output file name>");
+                return false;
+            }
+            inputFileName = args[0];
+            outputFileName = args[1];
             return true;
         }
 
