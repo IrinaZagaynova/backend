@@ -5,18 +5,6 @@ namespace PasswordStrength
 {
     public class Program
     {
-        public static bool ParseArgs(string[] args, ref string password)
-        {
-            if (args.Length != 1)
-            {
-                System.Console.WriteLine("Incorrect number of arguments!");
-                System.Console.WriteLine("Usage PasswordStrength.exe <input string>");
-                return false;
-            }
-            password = args[0];
-            return true;
-        }
-
         public static bool IsStringConsistsOfDigitsOrEnglishCharacters(string password)
         {
             for (int i = 0; i < password.Length; i++)
@@ -161,6 +149,18 @@ namespace PasswordStrength
             passwordStrength -= ConsideringTheNumberOfRepeatedCharacters(password);
             
             return passwordStrength;
+        }
+
+        public static bool ParseArgs(string[] args, ref string password)
+        {
+            if (args.Length != 1)
+            {
+                System.Console.WriteLine("Incorrect number of arguments!");
+                System.Console.WriteLine("Usage PasswordStrength.exe <input string>");
+                return false;
+            }
+            password = args[0];
+            return true;
         }
 
         static int Main(string[] args)

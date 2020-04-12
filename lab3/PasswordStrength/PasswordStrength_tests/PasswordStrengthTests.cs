@@ -3,28 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PasswordStrengthTests
 {
     [TestClass]
-    public class CheckParseArgsTests
-    {
-        [TestMethod]
-        public void Incorrect_number_of_args()
-        {
-            string[] str = { "password", "password" };
-            string password = "";
-            bool result = PasswordStrength.Program.ParseArgs(str, ref password);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void Correct_number_of_args()
-        {
-            string[] str = { "password" };
-            string password = "";
-            bool result = PasswordStrength.Program.ParseArgs(str, ref password);
-            Assert.IsTrue(result);
-        }
-    }
-
-    [TestClass]
     public class IsStringConsistsOfDigitsOrEnglishCharactersTests
     {
         [TestMethod]
