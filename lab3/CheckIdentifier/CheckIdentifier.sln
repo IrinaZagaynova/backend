@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckIdentifier", "CheckIdentifier\CheckIdentifier.csproj", "{CE5CD659-0FC7-4851-8E42-F5E5F66339C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckIdentifier.Tests", "CheckIdentifier_tests\CheckIdentifier.Tests.csproj", "{0DDC4985-F7BE-4F60-99EF-307445697659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CheckIdentifierTests", "CheckIdentifier_tests\CheckIdentifierTests.csproj", "{0DDC4985-F7BE-4F60-99EF-307445697659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,28 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CheckIdentifierTests
 {
     [TestClass]
-    public class ParseArgsTests
-    {
-        [TestMethod]
-        public void Incorrect_number_of_args()
-        {
-            string[] str = { };
-            string inputParameter = "";
-            bool result = CheckIdentifier.Program.ParseArgs(str, ref inputParameter);
-            Assert.IsFalse(result);
-        }
-
-        [TestMethod]
-        public void Correct_number_of_args()
-        {
-            string[] str = { "hello" };
-            string inputParameter = "";
-            bool result = CheckIdentifier.Program.ParseArgs(str, ref inputParameter);
-            Assert.IsTrue(result);
-        }
-    }
-
-    [TestClass]
     public class IsCharacterEnglishLetterTests
     {
         [TestMethod]

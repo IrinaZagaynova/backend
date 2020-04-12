@@ -4,19 +4,6 @@ namespace CheckIdentifier
 {
     public static class Program
     {
-        public static bool ParseArgs(string[] args, ref string inputParameter)
-        {
-            if (args.Length != 1)
-            {
-                System.Console.WriteLine("no");
-                System.Console.WriteLine("Incorrect number of arguments!");
-                System.Console.WriteLine("Usage CheckIdentifier.exe <input string>");
-                return false;
-            }
-            inputParameter = args[0];
-            return true;
-        }
-
         public static bool IsCharacterEnglishLetter(char character)
         {
             if ((character >= 'A') && (character <= 'Z') || (character >= 'a') && (character <= 'z'))
@@ -59,6 +46,19 @@ namespace CheckIdentifier
                 return false;
             }
             System.Console.WriteLine("yes");
+            return true;
+        }
+
+        public static bool ParseArgs(string[] args, ref string inputParameter)
+        {
+            if (args.Length != 1)
+            {
+                System.Console.WriteLine("no");
+                System.Console.WriteLine("Incorrect number of arguments!");
+                System.Console.WriteLine("Usage CheckIdentifier.exe <input string>");
+                return false;
+            }
+            inputParameter = args[0];
             return true;
         }
 
