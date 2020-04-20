@@ -27,13 +27,12 @@ namespace Translator
 
             app.Run(async (context) =>
             {
-                Dictionary<string, string> dictionary;
-                dictionary = Dictionary.FillInDictionary("dictionary.txt");
+                Dictionary dictionary = new Dictionary("dictionary.txt");
                 if (context.Request.Query.ContainsKey("word"))
                 {
                     string word = context.Request.Query["word"];
-                    string translation = "";
-                    if (Dictionary.TranslateWord(word, ref translation, dictionary))
+                    string translation = dictionary.TranslateWord(word);
+                    if (translation != "")
                     {
                         context.Response.ContentType = "text/plain; charset=utf-8";
                         await context.Response.WriteAsync(translation);

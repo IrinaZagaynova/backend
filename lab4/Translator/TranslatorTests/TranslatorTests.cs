@@ -8,10 +8,14 @@ namespace TranslatorTests
     [TestClass]
     public class FillInDictionaryTest
     {
+        Translator.Dictionary dictionary = new Translator.Dictionary("../../../testDictionary.txt");
+
         [TestMethod]
         public void Filling_in_identical_dictionary()
         {
-            Dictionary<string, string> dictionary = Dictionary.FillInDictionary("../../../../Translator/dictionary.txt");
+            Dictionary<string, string> testDictionary = new Dictionary<string, string>();
+            testDictionary = dictionary.FillInDictionary("../../../testDictionary.txt");
+
             Dictionary<string, string> expectedDictionary = new Dictionary<string, string>
             {
                 { "cat", "кот" },
@@ -19,59 +23,34 @@ namespace TranslatorTests
                 { "good morning", "доброе утро" },
             };
 
-            CollectionAssert.AreEquivalent(expectedDictionary, dictionary);
+            CollectionAssert.AreEquivalent(expectedDictionary, testDictionary);
         }
     }
 
     [TestClass]
-    public class IsItEnglisTests
+    public class TranslateWordTest
     {
-        [TestMethod]
-        public void English_word_returns_true()
-        {
-            Assert.IsTrue(Dictionary.IsItEnglish("english word"));
-        }
-
-        [TestMethod]
-        public void Not_English_word_returns_false()
-        {
-            Assert.IsFalse(Dictionary.IsItEnglish("слово"));
-            Assert.IsFalse(Dictionary.IsItEnglish("1234"));
-        }
-    }
-
-    [TestClass]
-    public class TranslateWordTests
-    {
-        Dictionary<string, string> dictionary = Dictionary.FillInDictionary("../../../../Translator/dictionary.txt");
+        Translator.Dictionary dictionary = new Translator.Dictionary("../../../testDictionary.txt");
 
         [TestMethod]
         public void Returns_translation_of_English_word_recorded_in_dictionary()
         {
-
-            string translation = Dictionary.TranslateFromEnglishToRussian("cat", dictionary);
+            string translation = dictionary.TranslateWord("cat");
             Assert.AreEqual("кот", translation);
-
         }
 
         [TestMethod]
         public void Returns_translation_of_Russian_word_recorded_in_dictionary()
         {
-            string translation = Dictionary.TranslateFromRussianToEnglish("день", dictionary);
+            string translation = dictionary.TranslateWord("день");
             Assert.AreEqual("day", translation);
-
         }
 
         [TestMethod]
-        public void Returns_translation_of_Russian_and_English_words_recorded_in_dictionary()
+        public void Returns_null_if_word_is_not_recorded_in_dictionary()
         {
-            string translation = "";
-            Dictionary.TranslateWord("cat", ref translation, dictionary);
-            Assert.AreEqual("кот", translation);
-
-            Dictionary.TranslateWord("день", ref translation, dictionary);
-            Assert.AreEqual("day", translation);
-
+            string translation = dictionary.TranslateWord("unknown word");
+            Assert.AreEqual(null, translation);
         }
     }
 }
