@@ -127,25 +127,18 @@ namespace PasswordStrength
         public static int GetPasswordStrength(string password)
         {
             int passwordStrength = 0;
-            // К надежности пароля прибавляется (4*n), где n - количество всех симоволов пароля
             passwordStrength = 4 * password.Length;
             
-            // К надежности пароль прибавляется +(n*4), где n - количество цифр в пароле
             passwordStrength += ConsideringTheNumberOfDigits(password);
             
-            // К надежности пароля прибавляется + ((len - n) * 2) в случае, если пароль содержит n символов в верхнем регистре
             passwordStrength += ConsideringTheNumberOfUppercaseCharacters(password);
             
-            // К надежности пароля прибавляется + ((len - n) * 2) в случае, если пароль содержит n символов в нижнем регистре
             passwordStrength += ConsideringTheNumberOfLowercaseCharacters(password);
             
-            // Если пароль состоит только из букв вычитаем число равное количеству символов
             passwordStrength += ConsideringIfThePasswordConsistsOfLettersOnly(password);
             
-            // Если пароль состоит только из цифр вычитаем число равное количеству символов
             passwordStrength += ConsideringIfThePasswordConsistsOfDigitsOnly(password);
             
-            // За каждый повторяющийся символ в пароле вычитается количество повторяющихся символов
             passwordStrength -= ConsideringTheNumberOfRepeatedCharacters(password);
             
             return passwordStrength;
