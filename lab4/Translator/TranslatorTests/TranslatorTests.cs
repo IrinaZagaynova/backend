@@ -18,9 +18,9 @@ namespace TranslatorTests
 
             Dictionary<string, string> expectedDictionary = new Dictionary<string, string>
             {
-                { "cat", "кот" },
-                { "day", "день" },
-                { "good morning", "доброе утро" },
+                { "cat", "РєРѕС‚" },
+                { "day", "РґРµРЅСЊ" },
+                { "good morning", "РґРѕР±СЂРѕРµ СѓС‚СЂРѕ" },
             };
 
             CollectionAssert.AreEquivalent(expectedDictionary, testDictionary);
@@ -36,13 +36,13 @@ namespace TranslatorTests
         public void Returns_translation_of_English_word_recorded_in_dictionary()
         {
             string translation = dictionary.TranslateWord("cat");
-            Assert.AreEqual("кот", translation);
+            Assert.AreEqual("РєРѕС‚", translation);
         }
 
         [TestMethod]
         public void Returns_translation_of_Russian_word_recorded_in_dictionary()
         {
-            string translation = dictionary.TranslateWord("день");
+            string translation = dictionary.TranslateWord("РґРµРЅСЊ");
             Assert.AreEqual("day", translation);
         }
 
