@@ -6,11 +6,7 @@ namespace CheckIdentifier
     {
         public static bool IsCharacterEnglishLetter(char character)
         {
-            if ((character >= 'A') && (character <= 'Z') || (character >= 'a') && (character <= 'z'))
-            {
-                return true;
-            }
-            return false;
+            return ((character >= 'A') && (character <= 'Z') || (character >= 'a') && (character <= 'z'));
         }
 
         public static bool IsStringConsistsOfDigitsOrEnglishLetters(string inputParameter)
