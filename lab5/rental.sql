@@ -94,12 +94,12 @@ WHERE dvd.production_year = 2010
 ORDER BY title;
 
 --task 5
-SELECT dvd.dvd_id, dvd.title
-FROM offer JOIN dvd ON offer.dvd_id = dvd.dvd_id
+SELECT dvd.dvd_id, dvd.title FROM offer 
+JOIN dvd ON offer.dvd_id = dvd.dvd_id
 WHERE offer.return_date IS NULL;
 
 --task 6
-SELECT customer.customer_id, customer.first_name, customer.last_name, dvd.dvd_id, dvd.title
-FROM offer JOIN dvd ON offer.dvd_id = dvd.dvd_id 
+SELECT customer.customer_id, customer.first_name, customer.last_name, dvd.dvd_id, dvd.title FROM offer 
+JOIN dvd ON offer.dvd_id = dvd.dvd_id 
 JOIN customer ON offer.customer_id = customer.customer_id
 WHERE strftime('%Y', offer.offer_date) = '2020';
