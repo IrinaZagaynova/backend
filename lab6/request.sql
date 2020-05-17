@@ -1,4 +1,5 @@
 --task 1
+
 CREATE TABLE PC (
 	id_PC	INTEGER NOT NULL,
 	cpu	INTEGER NOT NULL,
@@ -8,13 +9,11 @@ CREATE TABLE PC (
 );
 
 INSERT INTO PC (cpu, memory, hdd)
-VALUES (1600, 2000, 500);
-INSERT INTO PC (cpu, memory, hdd)
-VALUES (2400, 3000, 800);
-INSERT INTO PC (cpu, memory, hdd)
-VALUES (3200, 3000, 1200);
-INSERT INTO PC (cpu, memory, hdd)
-VALUES (2400, 2000, 500);
+VALUES 
+	(1600, 2000, 500),
+	(2400, 3000, 800),
+	(3200, 3000, 1200),
+	(2400, 2000, 500);
 
 --1.1 Тактовые частоты CPU тех компьютеров, у которых объем памяти 3000 Мб
 
@@ -41,19 +40,14 @@ CREATE TABLE track_downloads (
 );
 
 INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (1, 1, date('2010-10-19'));
-INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (2, 1, date('2010-10-19'));
-INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (3, 2, date('2010-01-01'));
-INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (4, 3, date('2010-10-19'));
-INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (5, 4, date('2010-10-19'));
-INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (6, 4, timestamp('2010-10-19'));
-INSERT INTO track_downloads (track_id, user_id, download_time)
-VALUES (7, 4, date('2010-03-03'));
+VALUES 
+	(1, 1, date('2010-10-19')),
+	(2, 1, date('2010-10-19')),
+	(3, 2, date('2010-01-01')),
+	(4, 3, date('2010-10-19')),
+	(5, 4, date('2010-10-19')),
+	(6, 4, date('2010-10-19')),
+	(7, 4, date('2010-03-03'));
 
 /*
 Напишите SQL-запрос, возвращающий все пары (download_count, user_count), удовлетворяющие следующему условию: 
@@ -96,57 +90,38 @@ CREATE TABLE student_on_course (
 )
 
 INSERT INTO student (name)
-VALUES ('Богдан Смирнов');
-INSERT INTO student (name)
-VALUES ('Мария Степанова');
-INSERT INTO student (name)
-VALUES ('Виктория Яковлева');
-INSERT INTO student (name)
-VALUES ('Иван Павлов');
-INSERT INTO student (name)
-VALUES ('Артём Сорокин');
-INSERT INTO student (name)
-VALUES ('Александр Котов');
-INSERT INTO student (name)
-VALUES ('Татьяна Петрова');
-INSERT INTO student (name)
-VALUES ('Кирилл Алексеев');
+VALUES
+	('Богдан Смирнов'),
+	('Мария Степанова'),
+	('Виктория Яковлева'),
+	('Иван Павлов'),
+	('Артём Сорокин'),
+	('Александр Котов'),
+	('Татьяна Петрова'),
+	('Кирилл Алексеев');
 
 INSERT INTO course (name)
-VALUES ('mathematics');
-INSERT INTO course (name)
-VALUES ('english_language ');
-INSERT INTO course (name)
-VALUES ('russian_language ');
-INSERT INTO course (name)
-VALUES ('physics');
-INSERT INTO course (name)
-VALUES ('physical_сulture');
+VALUES
+	('mathematics'),
+	('english_language '),
+	('russian_language '),
+	('physics'),
+	('physical_сulture');
 
 INSERT INTO student_on_course (id_student, id_course)
-VALUES (1, 1);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (1, 2);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (1, 5);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (2, 2);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (2, 4);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (3, 2);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (4, 2);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (4, 4);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (4, 5);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (5, 2);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (7, 4);
-INSERT INTO student_on_course (id_student, id_course)
-VALUES (8, 2);
+VALUES
+	(1, 1),
+	(1, 2),
+	(1, 5),
+	(2, 2),
+	(2, 4),
+	(3, 2),
+	(4, 2),
+	(4, 4),
+	(4, 5),
+	(5, 2),
+	(7, 4),
+	(8, 2);
 
 --4.1 Количество курсов, на которые ходят более 5 студентов
 
@@ -158,22 +133,22 @@ FROM
     JOIN course ON course.id_course = student_on_course.id_course
 	GROUP BY course.id_course
 	HAVING (COUNT(course.id_course) >= 5)
-) course
+)
 GROUP BY count
 
 --4.2 Все курсы, на которые записан определенный студент
 
+--Для студента с id = 1
 SELECT student.id_student, student.name, course.id_course, course.name FROM student
 JOIN student_on_course ON student_on_course.id_student = student.id_student
 JOIN course ON course.id_course = student_on_course.id_course
+WHERE student.id_student = 1
 
 --task 5
-
 /*
 Может ли значение в столбце(ах), на который наложено ограничение foreign key, равняться null? 
 Привидите пример. 
-*/
-/*
+
 Может, если на столбец не наложено ограничение not null
 Пример: пусть есть база данных, в которой хранятся предложения по продажам. 
 Для каждого предложения назначено только одно торговое лицо и один клиент. 
@@ -189,6 +164,7 @@ JOIN course ON course.id_course = student_on_course.id_course
 Приведите пример таблиц с данными и запросы. 
 */
 
+--Пример:
 CREATE TABLE letter (
 	id_letter	INTEGER NOT NULL,
 	letter TEXT NOT NULL,
@@ -196,14 +172,12 @@ CREATE TABLE letter (
 )
 
 INSERT INTO letter (letter)
-VALUES ('a');
-INSERT INTO letter (letter)
-VALUES ('b');
-INSERT INTO letter (letter)
-VALUES ('a');
-INSERT INTO letter (letter)
-VALUES ('c');
-
+VALUES 
+	('a'),
+	('b'),
+	('a'),
+	('c');
+	
 --Нужно использовать DISTINCT по столбцу с повторяющимися строками
 SELECT DISTINCT letter FROM letter;
 
@@ -224,46 +198,37 @@ CREATE TABLE orders (
 )
 
 INSERT INTO users (name)
-VALUES ('Богдан Смирнов');
-INSERT INTO users (name)
-VALUES ('Мария Степанова');
-INSERT INTO users (name)
-VALUES ('Виктория Яковлева');
-INSERT INTO users (name)
-VALUES ('Иван Павлов');
-INSERT INTO users (name)
-VALUES ('Артём Сорокин');
+VALUES 
+	('Богдан Смирнов'),
+	('Мария Степанова'),
+	('Виктория Яковлева'),
+	('Иван Павлов'),
+	('Артём Сорокин');
 
 INSERT INTO orders (users_id, status)
-VALUES (1, 0);
-INSERT INTO orders (users_id, status)
-VALUES (1, 0);
-INSERT INTO orders (users_id, status)
-VALUES (2, 0);
-INSERT INTO orders (users_id, status)
-VALUES (3, 0);
-INSERT INTO orders (users_id, status)
-VALUES (3, 1);
-INSERT INTO orders (users_id, status)
-VALUES (3, 1);
-INSERT INTO orders (users_id, status)
-VALUES (3, 1);
-INSERT INTO orders (users_id, status)
-VALUES (3, 1);
-INSERT INTO orders (users_id, status)
-VALUES (3, 1);
-INSERT INTO orders (users_id, status)
-VALUES (3, 1);
-INSERT INTO orders (users_id, status)
-VALUES (4, 0);
-INSERT INTO orders (users_id, status)
-VALUES (5, 1);
+VALUES 
+	(1, 0),
+	(1, 0),
+	(2, 0),
+	(3, 0),
+	(3, 1),
+	(3, 1),
+	(3, 1),
+	(3, 1),
+	(3, 1),
+	(3, 1),
+	(4, 0),
+	(5, 1);
 
 --7.1 Выбрать всех пользователей из таблицы users, у которых ВСЕ записи в таблице orders имеют status = 0
 
-SELECT DISTINCT users.users_id, users.name, orders.status FROM users
+SELECT DISTINCT users.users_id, users.name FROM users
 JOIN orders ON orders.users_id = users.users_id
-WHERE orders.status = 0;
+WHERE users.users_id NOT IN 
+( 
+	SELECT users_id FROM orders
+	WHERE status != 0
+);
 
 --7.2 Выбрать всех пользователей из таблицы users, у которых больше 5 записей в таблице orders имеют status = 1
 
@@ -275,7 +240,13 @@ HAVING count > 5;
 
 --task 8
 --В чем различие между выражениями HAVING и WHERE?
+
 /*
-WHERE выбирает строки до выполнения каких-либо агрегатных функции
+WHERE используется для проверки условия на момент выборки.
+Нельзя использовать с GROUP BY.
+
 HAVING предназначен для применения фильтра по результатам агрегатной функции
+Может использоваться только с GROUP BY
+
+Неэффективно использовать HAVING не по результатам агрегатной функции
 */
